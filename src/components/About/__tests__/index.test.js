@@ -4,16 +4,15 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 // need the extend-expect library from the jest-dob package
 import '@testing-library/jest-dom/extend-expect';
-
 // Component being tested
 import About from '..';
 
 // call the cleanup utility function using the afterEach global function from Jest
 afterEach(cleanup);
+
 // declare the componenet we're testing
 describe('About component', () => {
-  // First Test
-  // baseline to verify that the component is rendering
+  // First Test (baseline to verify that the component is rendering)
   it('renders', () => {
     render(<About />);
   });
