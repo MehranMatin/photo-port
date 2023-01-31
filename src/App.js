@@ -6,17 +6,17 @@ import Nav from './components/Nav';
 function App() {
   const [categories] = useState([
     {
-      name: 'Commerical',
+      name: 'commerical',
       description:
         'Photos of grocery stores, food trucks, and other commercial projects'
     },
     {
-      name: 'Portraits',
+      name: 'portraits',
       description: 'Portraits of people in my life'
     },
-    { name: 'Food', description: 'Delicious delicacies' },
+    { name: 'food', description: 'Delicious delicacies' },
     {
-      name: 'Landscape',
+      name: 'landscape',
       description: 'Fields, farmhouse, waterfalls, and the beauty of nature'
     }
   ]);
@@ -29,12 +29,10 @@ function App() {
         categories={categories}
         setCurrentCategory={setCurrentCategory}
         currentCategory={currentCategory}
-      ></Nav>
+      />
       <main>
-        <div>
-          <Gallery></Gallery>
-          <About></About>
-        </div>
+        <Gallery currentCategory={currentCategory} />
+        <About />
       </main>
     </div>
   );
