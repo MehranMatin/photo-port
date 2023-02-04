@@ -1,7 +1,7 @@
 import React from 'react';
 
 // we received currentPhoto from the PhotoList component...
-function Modal({ currentPhoto }) {
+function Modal({ onClose, currentPhoto }) {
   // then assigned its properties in the modal
   const { name, category, description, index } = currentPhoto;
 
@@ -14,7 +14,9 @@ function Modal({ currentPhoto }) {
           alt='current category'
         />
         <p>{description}</p>
-        <button type='button'>Close this modal</button>
+        <button type='button' onClick={onClose}>
+          Close this modal
+        </button>
       </div>
     </div>
   );

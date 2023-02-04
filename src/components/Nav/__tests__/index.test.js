@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import Nav from '..';
 
@@ -73,5 +73,24 @@ describe('links are visible', () => {
     // Assert the valid outcomes using matcher
     expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
     expect(getByTestId('about')).toHaveTextContent('About me');
+  });
+});
+
+describe('onClick events', () => {
+  it('calls the click handler when clicked', () => {
+    const { getByText } = render(
+      <Nav
+        categories={categories}
+        setCurrentCategory={mockSetCurrentCategory}
+        currentCategory={mockCurrentCategory}
+        contactSelected={mockContactSelected}
+        setContactSelected={mockSetContactSelected}
+      />
+    );
+    fireEvent.click(getByText('About me'));
+    fireEvent.click(getByText('Contact'));
+    fireEvent.click(getByText('Portraits'));
+
+    expect(mockSetContactSelected).toHaveBeenCalledTimes(3);
   });
 });
